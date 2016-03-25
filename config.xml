@@ -2,6 +2,10 @@
   <name>freeVSTsearch</name>
   <description>Hello World sample application that responds to the deviceready event.</description>
   <author href="http://phonegap.com" email="support@phonegap.com">PhoneGap Team</author>
+  <!-- iOS -->
+  <plugin name="InAppBrowser" value="CDVInAppBrowser"/>
+  <access origin="*" browserOnly="true"/>
+
   <content src="index.html"/>
   <preference name="permissions" value="none"/>
   <preference name="orientation" value="default"/>

@@ -27,8 +27,12 @@
   <meta name="msapplication-tap-highlight" content="no" />
   <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
   <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-  <link rel="stylesheet" type="text/css" href="css/index.css" />
+  <!--<link rel="stylesheet" type="text/css" href="css/index.css" />-->
+  <!--<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.css" />-->
+  <link rel="stylesheet" type="text/css" href="css/test.css" />
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+  <script src="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.js">
+  </script>
   <script type="text/javascript" src="js/jquery.xdomainajax.js"></script>
   <script type="text/javascript" src="cordova.js"></script>
   <script type="text/javascript" src="js/index.js"></script>
@@ -37,13 +41,35 @@
     app.initialize();
   </script>
   <title>FreeVST Search</title>
+  <script type="text/javascript" charset="utf-8">
+    if (typeof device === 'undefined') {
+      document.addEventListener("deviceready", onDeviceReady, false);
+    } else {
+      onDeviceReady();
+    }
+
+    function onDeviceReady() {
+      var Anchors = document.getElementsByTagName("a");
+      for (var i = 0; i < Anchors.length; i++) {
+        Anchors[i].addEventListener("click",
+          function(event) {
+            event.preventDefault();
+            window.open(encodeURI(this.href), '_system', 'location=yes');
+          },
+          false);
+      }
+    }
+  </script>
 </head>
 
 <body>
-  <br>
-  </br>
-  <h1>Free VSTs</h1>
+  <div id="headerArea">
+    <h1>Free VSTs</h1>
+  </div>
   <p class="news"></p>
+  <br>
+  <hr>
+  <br>
   <iframe width="100%" height="450" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/62827678&amp;color=ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false"></iframe>
 </body>
 

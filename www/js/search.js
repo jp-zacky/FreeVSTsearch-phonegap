@@ -57,7 +57,7 @@ function getLinks(news) {
 }
 
 function format(text, link) {
-  var new_text = "<a href=\"" + link + "\">" + "● " + text + "</a><br>";
+  var new_text = "<li><a href=\"" + link + "\" target=\"_system\" style=\"text-decoration:none;\">" + text + "</a><br><br></li>";
   return new_text;
 }
 
@@ -66,7 +66,6 @@ function formats(text, link) {
   for (var i = 0; i < text.length; i++) {
     new_text.push(format(text[i], link[i]));
   }
-  alert(new_text[11]);
   return new_text;
 }
 
