@@ -23,8 +23,9 @@ $.get(app_url, function(data) {
   var newsText = getTexts(news);
   // get link(string)
   var newsLink = getLinks(news);
-  var str = format(newsText[0], newsLink[0]);
-  $("p.news").html(str);
+  var str = formats(newsText, newsLink);
+  drow(str);
+
 });
 
 function getText(news) {
@@ -55,7 +56,24 @@ function getLinks(news) {
   return news_clone;
 }
 
-function format(text, link){
-  var new_text = "<a href=\"" + link + "\">" + "● " + text + "</a>";
+function format(text, link) {
+  var new_text = "<a href=\"" + link + "\">" + "● " + text + "</a><br>";
   return new_text;
+}
+
+function formats(text, link) {
+  var new_text = new Array();
+  for (var i = 0; i < text.length; i++) {
+    new_text.push(format(text[i], link[i]));
+  }
+  alert(new_text[11]);
+  return new_text;
+}
+
+function drow(str) {
+  var result = "";
+  for (var i = 0; i < str.length; i++) {
+    result = result + str[i];
+  }
+  $("p.news").html(result);
 }
