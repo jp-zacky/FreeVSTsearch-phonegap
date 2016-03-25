@@ -23,9 +23,8 @@ $.get(app_url, function(data) {
   var newsText = getTexts(news);
   // get link(string)
   var newsLink = getLinks(news);
-  alert(newsLink[2]);
-  alert(news[2])
-
+  var str = format(newsText[0], newsLink[0]);
+  $("p.news").html(str);
 });
 
 function getText(news) {
@@ -54,4 +53,9 @@ function getLinks(news) {
     news_clone[i] = getLink(news_clone[i]);
   }
   return news_clone;
+}
+
+function format(text, link){
+  var new_text = "<a href=\"" + link + "\">" + "● " + text + "</a>";
+  return new_text;
 }
