@@ -14,11 +14,44 @@ $.get(app_url, function(data) {
       news.push(domObject);
     }
   }
+  // get news(html)
   news = news.filter(function(x, i, self) {
     return self.indexOf(x) === i;
   });
+
+  // get text(string)
+  var newsText = getTexts(news);
+  // get link(string)
+  var newsLink = getLinks(news);
+  alert(newsLink[2]);
+  alert(news[2])
+
 });
 
-function format(domObject) {
+function getText(news) {
+  var news_clone = news.concat();
+  var a = news_clone.replace(/<a\sclass=.*\">/, "").replace(/<\/a>/, "");
+  return a;
+}
 
+function getTexts(news) {
+  var news_clone = news.concat();
+  for (var i = 0; i < news_clone.length; i++) {
+    news_clone[i] = getText(news_clone[i]);
+  }
+  return news_clone;
+}
+
+function getLink(news) {
+  var news_clone = news.concat();
+  var a = news_clone.replace(/<a\sclass=.*href=\"/, "").replace(/\">.*<\/a>/, "");
+  return a;
+}
+
+function getLinks(news) {
+  var news_clone = news.concat();
+  for (var i = 0; i < news_clone.length; i++) {
+    news_clone[i] = getLink(news_clone[i]);
+  }
+  return news_clone;
 }
